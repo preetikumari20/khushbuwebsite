@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khushbu Chauhan Group | Connaught Place, Delhi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root { --orange: #ff6600; --dark: #0a0a0a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: black; color: #aea5a5; line-height: 1.8; overflow-x: hidden; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header & Navbar */
+/* PERFECT FIXED HEADER – NO EXTRA HEIGHT */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;                    /* Fixed height – looks premium */
+  background: rgba(15, 15, 15, 0.96);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+/* Optional: Shrink header on scroll (very modern) */
+header.scrolled {
+  height: 80px;
+  padding: 10px 0;
+  background: rgba(10, 10, 10, 0.98);
+}
+
+nav {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 30px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo + Text Perfectly Aligned */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-area img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 4px solid var(--orange);
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+  transition: all 0.3s;
+}
+
+header.scrolled .logo-area img {
+  width: 58px;
+  height: 58px;
+}
+
+.logo-text h1 {
+  font-size: 28px;
+  color: var(--orange);
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+}
+
+.logo-text span {
+  font-size: 13px;
+  color: #9e8383;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Nav Links – Perfect Spacing */
+.nav-links {
+  display: flex;
+  gap: 45px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16.5px;
+  padding: 10px 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--orange);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--orange);
+  transition: 0.4s;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 90%;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: rgb(189, 183, 183);
+}
+
+    section { padding: 120px 0; }
+    .section-title {
+      font-size: 48px; color: var(--orange); text-align: center; margin-bottom: 70px;
+      position: relative; padding-bottom: 20px;
+    }
+    .section-title::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 130px; height: 6px; background: var(--orange); border-radius: 3px;
+    }
+
+    .btn {
+      background: var(--orange); color: rgb(201, 78, 78); padding: 18px 45px; border-radius: 50px;
+      text-decoration: none; font-weight: bold; font-size: 19px; margin: 12px;
+      display: inline-block; box-shadow: 0 12px 40px rgba(255,102,0,0.5);
+      transition: 0.4s;
+    }
+    .btn:hover { transform: translateY(-8px); }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
+    }
+    .card {
+      background: #1a1a1a; padding: 40px; border-radius: 25px; text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6); border-top: 6px solid var(--orange);
+      transition: 0.4s;
+    }
+    .card:hover { transform: translateY(-15px); }
+
+    /* Horizontal Gallery */
+    .gallery-grid {
+      display: flex; overflow-x: auto; gap: 30px; padding: 20px 0;
+      scroll-snap-type: x mandatory; scrollbar-width: thin;
+    }
+    .gallery-grid::-webkit-scrollbar { height: 10px; background: #222; }
+    .gallery-grid::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
+
+    .gallery-item {
+      flex: 0 0 340px; height: 280px; border-radius: 25px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); border: 4px solid rgba(255,102,0,0.2);
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+    .gallery-item:hover img { transform: scale(1.2); }
+
+    .md-photo {
+      max-width: 420px; width: 90%; margin: 50px auto; display: block;
+      border-radius: 30px; border: 7px solid var(--orange); box-shadow: 0 25px 60px rgba(255,102,0,0.4);
+    }
+
+    footer {
+      background: #000; padding: 90px 20px 60px; text-align: center; color: #aaa;
+    }
+    .social-icons a {
+      display: inline-block; width: 60px; height: 60px; margin: 0 20px;
+      background: #333; color: white; border-radius: 50%; font-size: 28px;
+      line-height: 60px; transition: 0.4s;
+    }
+    .social-icons a:hover { background: var(--orange); transform: translateY(-12px); }
+
+    .whatsapp {
+      position: fixed; bottom: 30px; right: 30px; background: #25D366;
+      width: 75px; height: 75px; border-radius: 50%; font-size: 40px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 15px 40px rgba(37,211,102,0.8); color: white; z-index: 999;
+    }
+
+    @media (max-width: 868px) {
+      .nav-links {
+        position: fixed; top: 0; left: -100%; width: 80%; height: 50%;
+        background: rgba(10,10,10,0.98); flex-direction: column; justify-content: center;
+        align-items: center; transition: 0.5s; z-index: 999; gap: 30px;
+      }
+      .nav-links.active { left: 0; }
+      .nav-links a { font-size: 26px; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+ 
+
+  <header>
+    <nav>
+      <div class="logo-area">
+        <img src="khushbu logo.jpg" alt="Khushbu Chauhan Group">
+        <div class="logo-text">
+          <h1>Khushbu Chauhan Group</h1>
+          <span>Connaught Place, Delhi</span>
+        </div>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#group">Group</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-toggle" id="mobileMenu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ALL SECTIONS WITH CORRECT IDs -->
+  <section class="hero" id="home">
+    <div class="container" style="text-align:center; padding-top:100px;">
+      <h1 style="font-size:68px; color:white;">Building Partnerships.<br>Shaping Communities.</h1>
+      <p style="font-size:26px; margin:30px 0;">Multi-sector excellence in Finance • Real Estate • Entertainment • Travel • Media • Consulting</p>
+      <a href="#contact" class="btn">Get In Touch</a>
+      <a href="#group" class="btn" style="background:transparent;border:3px solid white;">Explore Group</a>
+    </div>
+  </section>
+
+  <section id="welcome">
+    <div class="container">
+      <h2 class="section-title">Welcome Message</h2>
+      <p style="font-size:24px; max-width:1000px; margin:0 auto 60px; text-align:center;">
+        Led by visionary <strong style="color:var(--orange)">MD & Director Ms. Khushbu Chauhan</strong>,<br>
+        we proudly stand as a trusted name in multi-industry excellence with the belief — <strong>"Network is Networth"</strong>
+      </p>
+      <img src="khushbu1.jpg" alt="Ms. Khushbu Chauhan" class="md-photo">
+    </div>
+  </section>
+
+  <section id="about" style="background:#111;">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p style="font-size:20px; max-width:1000px; margin:0 auto; text-align:center;">
+        Khushbu Chauhan Group is a dynamic multi-sector conglomerate delivering excellence across Finance, Real Estate, Entertainment, Travel, Media, and Strategic Consulting. Founded with integrity and innovation, we build lasting partnerships and sustainable success.
+      </p>
+    </div>
+  </section>
+
+  <section id="group">
+    <div class="container">
+      <h2 class="section-title">Our Group Companies</h2>
+      <div class="grid">
+        <div class="card">CA Firm</div>
+        <div class="card">Law Firm</div>
+        <div class="card">Financial Sector</div>
+        <div class="card">Film Production</div>
+        <div class="card">Political Affairs</div>
+        <div class="card">Celebrities Endorsement</div>
+        <div class="card">Real Estate</div>
+        <div class="card">Travel & Visa</div>
+        <div class="card">Social Media</div>
+        <div class="card">Business Consultation</div>
+        <div class="card">Media Channel</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" style="background:#000;">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="khushbu1.jpg"></div>
+        <div class="gallery-item"><img src="khushbu7.jpg"></div>
+        <div class="gallery-item"><img src="khushbu3.jpg"></div>
+        <div class="gallery-item"><img src="khushbu1.jpg"></div>
+        <div class="gallery-item"><img src="khushbu10.jpg"></div>
+        <div class="gallery-item"><img src="khushbu6.jpg"></div>
+        <div class="gallery-item"><img src="khushbu7.jpg"></div>
+        <div class="gallery-item"><img src="khushbu8.jpg"></div>
+        <div class="gallery-item"><img src="khushbu9.jpg"></div>
+        <div class="gallery-item"><img src="khushbu10.jpg"></div>
+        <div class="gallery-item"><img src="khushbu6.jpg"></div>
+        <div class="gallery-item"><img src="khushbu1.jpg"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profile">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">Business Profile</h2>
+      <p style="font-size:20px; margin-bottom:40px;">Download our complete company profile</p>
+      <a href="profile.pdf" class="btn" download>Download PDF Profile</a>
+    </div>
+  </section>
+
+  <section id="services" style="background:#111;">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card">CA & Taxation</div>
+        <div class="card">Legal Services</div>
+        <div class="card">Financial Advisory</div>
+        <div class="card">Film Production</div>
+        <div class="card">Real Estate Development</div>
+        <div class="card">Luxury Travel & Visa</div>
+        <div class="card">Celebrity Management</div>
+        <div class="card">Digital Media & PR</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title">Why Choose Us?</h2>
+      <div class="grid">
+        <div class="card"><strong>Multi-Industry Expertise</strong><p>One-stop solution for all business needs</p></div>
+        <div class="card"><strong>Trusted & Transparent</strong><p>Integrity in every partnership</p></div>
+        <div class="card"><strong>Innovation-Driven</strong><p>Cutting-edge solutions & strategies</p></div>
+        <div class="card"><strong>Strong Network</strong><p>"Network is Networth" – proven results</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision" style="background:#111;">
+    <div class="container">
+      <h2 class="section-title">Vision & Mission</h2>
+      <p style="font-size:28px; color:var(--orange); text-align:center; font-weight:bold;">“Network is Networth”</p>
+      <p style="font-size:20px; max-width:900px; margin:40px auto; text-align:center;">
+        To empower individuals and businesses through ethical leadership, innovative solutions, and sustainable growth — contributing to India's economic and social development.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div style="background:linear-gradient(135deg,var(--orange),#cc5200); padding:80px; border-radius:35px; max-width:900px; margin:0 auto; text-align:center; box-shadow:0 30px 70px rgba(255,102,0,0.6);">
+        <h2 style="font-size:42px; color:white; margin-bottom:30px;">Get In Touch</h2>
+        <p style="font-size:18px; color:white;"><strong>Phone:</strong> +91 94857 32466</p>
+        <p style="font-size:18px; color:white;"><strong>Email:</strong> khushbuchauhangroup@gmail.com</p>
+        <p style="font-size:18px; color:white;"><strong>Address:</strong> Connaught Place, New Delhi</p>
+        <a href="https://wa.me/919485732466" style="background:white;color:#111;padding:18px 50px;border-radius:50px;display:inline-block;margin-top:30px;font-weight:bold;font-size:18px;">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="font-size:19px;">© 2025 Khushbu Chauhan Group. All Rights Reserved.</p>
+      <p style="font-size:26px; color:var(--orange); margin:30px 0; font-weight:bold;">“Network is Networth”</p>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919485732466" class="whatsapp" target="_blank">WhatsApp</a>
+
+  <script>
+    // Mobile Menu
+    document.getElementById('mobileMenu').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Active link on scroll + smooth scroll
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        if (window.scrollY >= section.offsetTop - 200) current = section.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        if (window.innerWidth <= 868) {
+          document.getElementById('navLinks').classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
